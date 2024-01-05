@@ -1,0 +1,138 @@
+.geocoding-app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(249, 252, 244);
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 10;
+  outline: 0.5rem solid rgb(255, 77, 0);
+  border-radius: 1.5%;
+  overflow: hidden;
+}
+
+.show-gc-app {
+  display: block;
+}
+
+.hide-gc-app {
+  display: none;
+}
+
+.geocoding-app .header {
+  display: grid;
+  grid-template-columns: 3fr 8fr 3fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 1rem;
+  border-radius: 1.5%;
+  padding: 0.2rem 0.8rem;
+  /* margin-bottom: 1rem; */
+  outline: dashed;
+  border-bottom: 0.3rem dashed
+}
+
+.geocoding-app .header .header-subsection {
+  justify-content: center;
+}
+
+.geocoding-app .header .header-name {
+  /* grid-area: header-name; */
+  grid-column: 1/2;
+  grid-row: 1/2
+}
+
+.geocoding-app .header .address {
+  /* grid-area: address; */
+  grid-column: 2/3;
+  grid-row: 1/2
+}
+
+.geocoding-app .header .ast-no {
+  /* grid-area: ast-no; */
+  grid-column: 3/4;
+  grid-row: 1/2
+}
+
+.geocoding-app .header .geocoding-app-close-btn {
+  /* grid-area: geocoding-app-close-btn; */
+  grid-column: 4/5;
+  grid-row: 1/2
+}
+
+.geocoding-app .header .header-subsection button {
+  border-radius: 0.6rem;
+  border: 0.1rem solid;
+  padding: 0.5rem;
+  margin: 0.2rem;
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.geocoding-app .header .header-subsection button:hover {
+  outline: 0.1rem solid rgb(121, 255, 121);
+  cursor: pointer;
+  background-color: #d5ffd5b5;
+}
+
+.geocoding-app .body {
+  width: 100%;
+  height: 100%;
+}
+
+.geocoding-app .body .geocoding-map {
+  /* width: 60rem; */
+  height: 40rem;
+}
+
+.geocoding-app .body .geocoding-map .map-container {
+  width: 60rem;
+  height: 50rem;
+}
+
+@media (max-width: 700px) {
+  .geocoding-app {
+    width: 30rem;
+  }
+
+  .geocoding-app .body .geocoding-map .map-container {
+    width: 30rem;
+    /* height: 30rem; */
+  }
+
+  .geocoding-app .header {
+    grid-template-columns: 5fr 5fr 1fr;
+    grid-template-rows: 2fr;
+    gap: 0;
+  }
+
+  .geocoding-app .header .address {
+    /* grid-area: address; */
+    text-align: center;
+    grid-column: 1/4;
+    grid-row: 2/3
+  }
+
+  .geocoding-app .header .header-name {
+    /* grid-area: header-name; */
+    grid-column: 1/2;
+    grid-row: 1/2
+  }
+
+  .geocoding-app .header .ast-no {
+    /* grid-area: ast-no; */
+    grid-column: 2/3;
+    grid-row: 1/2
+  }
+
+  .geocoding-app .header .geocoding-app-close-btn {
+    /* grid-area: geocoding-app-close-btn; */
+    grid-column: 3/4;
+    grid-row: 1/2
+  }
+
+}

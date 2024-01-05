@@ -1,0 +1,108 @@
+.tabs {
+  font-size: 2rem;
+  height: 100%;
+  /* margin: 1rem; */
+}
+
+.tabs .tabs-show {
+  display: block;
+}
+
+.tabs-hide {
+  display: none;
+}
+
+.tabs .tab-active {
+  background-color: rgb(229, 254, 254);
+  /* border-bottom: 0.1rem solid #e81752; */
+}
+
+.tabs .tabs-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  background-color: khaki;
+  height: 5%;
+  /* padding: 0 1rem; */
+  gap: 2rem;
+}
+
+.tabs .tabs-header .tab-title {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  outline: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tabs .tabs-header .new-trn-div {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  outline: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tabs .tabs-header .tabs-btns {
+  grid-column: 3/4;
+  grid-row: 1/2;
+  outline: auto;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+
+
+.tabs .new-trn {
+  font-size: 1.6rem;
+}
+
+.tabs .tabs-body {
+  /* height: calc(100vh - 8rem); */
+  height: 95%;
+  margin-top: 0.45rem;
+}
+
+.tabs .tabs-tab {
+  text-align: center;
+}
+
+.tabs .tabs-header-table {
+  /* margin: 0 1rem 0 0 ; */
+}
+
+.tabs .tabs-tab:hover {
+  cursor: pointer;
+  border-bottom: 0.1rem solid #e81752;
+}
+
+.tabs-body-content {
+  height: 100%;
+}
+
+.tabs .tab-name {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .tabs .tabs-header {
+    gap: 3rem;
+  }
+
+
+  .tabs .new-trn,
+  .tabs .tabs-header {
+    font-size: 1.4rem;
+  }
+}

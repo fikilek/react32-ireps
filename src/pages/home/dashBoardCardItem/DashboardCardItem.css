@@ -1,0 +1,14 @@
+.dashboard-card-item {
+  font-size: 1.3rem;
+  border: 0.1rem solid;
+  /* border-radius: 5%; */
+  margin: 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-card-item .total .number {
+  font-size: 3rem;
+}
