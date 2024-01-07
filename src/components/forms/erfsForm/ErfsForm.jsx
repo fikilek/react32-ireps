@@ -48,7 +48,30 @@ const ErfsForm = props => {
 
 	// diplicate erf form
 	const duplicateErfForm = () => {
-		// console.log(`duplicating erfData`, formData);
+		console.log(`duplicating erfData`, formData);
+
+		// dont duplicate if property type is empty
+		const efrNo = formData?.erfNo;
+		const propertyType = formData?.propertyType?.type;
+		console.log(`propertyType`, propertyType);
+
+		if (
+			propertyType === undefined ||
+			propertyType === "" ||
+			propertyType === null
+		) {
+			toast.warn("🦄 Cannot uplicate erf with no property type!", {
+				position: "bottom-center",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "colored",
+			});
+			return null;
+		}
 
 		// 0. first clone the erf data
 		const clonedErfData = cloneDeep(formData);
