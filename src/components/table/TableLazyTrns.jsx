@@ -9,7 +9,7 @@ import "@ag-grid-community/styles/ag-theme-alpine.css";
 import { ModuleRegistry } from "@ag-grid-community/core";
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import { RingLoader } from "react-spinners";
-import { AstsTableContext } from "../../contexts/AstsTableContext";
+import { TrnsTableContext } from "../../contexts/TrnsTableContext";
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const CustomNoRowsOverlay = props => {
@@ -36,11 +36,11 @@ const CustomNoRowsOverlay = props => {
 	);
 };
 
-const Table = props => {
-	// console.log(`Table props`, props);
+const TableLazyTrns = props => {
+	// console.log(`TableLazyTrns props`, props);
 	const { rowData, columnDefs, setSelectedRows, ml1 } = props;
 
-	const { state, dispatch } = useContext(AstsTableContext);
+	const { dispatch } = useContext(TrnsTableContext);
 
 	let tableHeight = "";
 	if (ml1 === "erfs") {
@@ -138,6 +138,6 @@ const Table = props => {
 	);
 };
 
-export default Table;
+export default TableLazyTrns;
 
-// TODO: mouse over tips on the Table skipHeader
+// TODO: mouse over tips on the TableLazyTrns skipHeader

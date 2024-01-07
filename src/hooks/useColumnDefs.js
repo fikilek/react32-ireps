@@ -2382,7 +2382,7 @@ export const useColumnDefs = props => {
 			cellRenderer: params => {
 				const { createdThrough } = params.data.metaData;
 				return (
-					<button className="table-row-btn table-row-btn-creator ">{`${createdThrough.creator} : ${createdThrough.creatorNo}`}</button>
+					<button className="table-row-btn table-row-btn-creator ">{`${createdThrough?.creator} : ${createdThrough?.creatorNo}`}</button>
 				);
 			},
 			cellRendererParams: {

@@ -42,6 +42,8 @@ import ErfsContextProvider from "./contexts/ErfsContext";
 import ReverseGeocodingContextProvider from "./contexts/ReverseGeocodingContext";
 import CliamsContextProvider from "./contexts/ClaimsContext";
 import { AreaTreeContextProvider } from "./contexts/AreaTreeContext";
+import { AstsTableContextProvider } from "./contexts/AstsTableContext";
+import { TrnsTableContextProvider } from "./contexts/TrnsTableContext.js";
 
 // import npm and other cpmponents modules
 import { ToastContainer } from "react-toastify";
@@ -76,118 +78,120 @@ const loader = (
 function App() {
 	return (
 		<>
-			<AreaTreeContextProvider>
-				<CliamsContextProvider>
-					<ErfsContextProvider>
-						<ReverseGeocodingContextProvider>
-							<GeocodingContextProvider>
-								<PhotoAppContextProvider>
-									<MediaViewContextProvider>
-										<Provider store={store}>
-											<FormStateContextProvider>
-												<ModalContextProvider>
-													<AuthContextProvider>
-														<MenuContextProvider>
-															<PoContextProvider>
-																<div className="app">
-																	<BrowserRouter>
-																		{/* <Header /> */}
+			<TrnsTableContextProvider>
+				<AstsTableContextProvider>
+					<AreaTreeContextProvider>
+						<CliamsContextProvider>
+							<ErfsContextProvider>
+								<ReverseGeocodingContextProvider>
+									<GeocodingContextProvider>
+										<PhotoAppContextProvider>
+											<MediaViewContextProvider>
+												<Provider store={store}>
+													<FormStateContextProvider>
+														<ModalContextProvider>
+															<AuthContextProvider>
+																<MenuContextProvider>
+																	<PoContextProvider>
+																		<div className="app">
+																			<BrowserRouter>
+																				{/* <Header /> */}
 
-																		{/* <div className="pages"> */}
-																		{/* <div className="header-container"> */}
-																		<Routes>
-																			<Route path={"/"} element={<Header />}>
-																				<Route index element={<Home />} />
-																				<Route path={"landing-page"} element={<Home />} />
+																				{/* <div className="pages"> */}
+																				{/* <div className="header-container"> */}
+																				<Routes>
+																					<Route path={"/"} element={<Header />}>
+																						<Route index element={<Home />} />
+																						<Route path={"landing-page"} element={<Home />} />
 
-																				{/* assets section -----------------------------------------------------*/}
-																				{/* path to assets main page [ml1 = asts] */}
-																				<Route path="/asts">
-																					<Route
-																						index
-																						element={
-																							<Suspense fallback={loader}>
-																								<RequireAuth>
-																									<Asts />
-																								</RequireAuth>
-																							</Suspense>
-																						}
-																					/>
-																					<Route
-																						path=":ml2"
-																						element={
-																							<Suspense fallback={loader}>
-																								<RequireAuth>
-																									<Asts />
-																								</RequireAuth>
-																							</Suspense>
-																						}
-																					>
+																						{/* assets section -----------------------------------------------------*/}
+																						{/* path to assets main page [ml1 = asts] */}
+																						<Route path="/asts">
+																							<Route
+																								index
+																								element={
+																									<Suspense fallback={loader}>
+																										<RequireAuth>
+																											<Asts />
+																										</RequireAuth>
+																									</Suspense>
+																								}
+																							/>
+																							<Route
+																								path=":ml2"
+																								element={
+																									<Suspense fallback={loader}>
+																										<RequireAuth>
+																											<Asts />
+																										</RequireAuth>
+																									</Suspense>
+																								}
+																							>
+																								<Route
+																									path=":ml3"
+																									element={
+																										<Suspense fallback={loader}>
+																											<RequireAuth>
+																												<Asts />
+																											</RequireAuth>
+																										</Suspense>
+																									}
+																								/>
+																							</Route>
+																						</Route>
+
+																						{/* transactions section -----------------------------------------------------*/}
+																						{/* path to assets main page [ml1 = trns] */}
+																						<Route path="/trns">
+																							<Route
+																								index
+																								element={
+																									<Suspense fallback={loader}>
+																										<RequireAuth>
+																											<Trns />
+																										</RequireAuth>
+																									</Suspense>
+																								}
+																							/>
+																							<Route
+																								path=":ml2"
+																								element={
+																									<Suspense fallback={loader}>
+																										<RequireAuth>
+																											<Trns />
+																										</RequireAuth>
+																									</Suspense>
+																								}
+																							>
+																								<Route
+																									path=":ml3"
+																									element={
+																										<Suspense fallback={loader}>
+																											<RequireAuth>
+																												<Trns />
+																											</RequireAuth>
+																										</Suspense>
+																									}
+																								/>
+																							</Route>
+																						</Route>
+
+																						{/* erfs section -----------------------------------------------------*/}
+																						{/* path to assets main page [ml1 = erfs] */}
 																						<Route
-																							path=":ml3"
+																							path="/erfs"
 																							element={
 																								<Suspense fallback={loader}>
 																									<RequireAuth>
-																										<Asts />
+																										<Erfs />
 																									</RequireAuth>
 																								</Suspense>
 																							}
-																						/>
-																					</Route>
-																				</Route>
+																						></Route>
 
-																				{/* transactions section -----------------------------------------------------*/}
-																				{/* path to assets main page [ml1 = trns] */}
-																				<Route path="/trns">
-																					<Route
-																						index
-																						element={
-																							<Suspense fallback={loader}>
-																								<RequireAuth>
-																									<Trns />
-																								</RequireAuth>
-																							</Suspense>
-																						}
-																					/>
-																					<Route
-																						path=":ml2"
-																						element={
-																							<Suspense fallback={loader}>
-																								<RequireAuth>
-																									<Trns />
-																								</RequireAuth>
-																							</Suspense>
-																						}
-																					>
-																						<Route
-																							path=":ml3"
-																							element={
-																								<Suspense fallback={loader}>
-																									<RequireAuth>
-																										<Trns />
-																									</RequireAuth>
-																								</Suspense>
-																							}
-																						/>
-																					</Route>
-																				</Route>
-
-																				{/* erfs section -----------------------------------------------------*/}
-																				{/* path to assets main page [ml1 = erfs] */}
-																				<Route
-																					path="/erfs"
-																					element={
-																						<Suspense fallback={loader}>
-																							<RequireAuth>
-																								<Erfs />
-																							</RequireAuth>
-																						</Suspense>
-																					}
-																				></Route>
-
-																				{/* admin section -----------------------------------------------------*/}
-																				<Route path="/admin">
-																					{/* <Route
+																						{/* admin section -----------------------------------------------------*/}
+																						<Route path="/admin">
+																							{/* <Route
 																					index
 																					element={
 																						<RequireAuth allowedRoles={["manager", "superuser"]}>
@@ -195,84 +199,86 @@ function App() {
 																						</RequireAuth>
 																					}
 																				/> */}
-																					<Route
-																						path=":ml2"
-																						element={
-																							<Suspense fallback={loader}>
-																								{/* <RequireAuth allowedRoles={["manager", "superuser"]}> */}
-																								<Admin />
-																								{/* </RequireAuth> */}
-																							</Suspense>
-																						}
-																					>
+																							<Route
+																								path=":ml2"
+																								element={
+																									<Suspense fallback={loader}>
+																										{/* <RequireAuth allowedRoles={["manager", "superuser"]}> */}
+																										<Admin />
+																										{/* </RequireAuth> */}
+																									</Suspense>
+																								}
+																							>
+																								<Route
+																									path=":ml3"
+																									element={
+																										// <RequireAuth allowedRoles={["manager", "superuser"]}>
+																										<Admin />
+																										// </RequireAuth>
+																									}
+																								/>
+																							</Route>
+																						</Route>
+																						{/* </Route> */}
+
+																						{/* TODO: Attend to the issue of displaying Unp for a signedin user */}
+																						{/* unp section (signedin user)-----------------------------------------------------*/}
+																						{/* path to unp main page [ml1 = unp] */}
 																						<Route
-																							path=":ml3"
+																							path="/unp"
 																							element={
-																								// <RequireAuth allowedRoles={["manager", "superuser"]}>
-																								<Admin />
-																								// </RequireAuth>
+																								<Suspense fallback={loader}>
+																									<RequireAuth>
+																										<Unp />
+																									</RequireAuth>
+																								</Suspense>
 																							}
+																						>
+																							{/* ml2 = ''[] or ''[] or ''[] or ''[] */}
+																							<Route
+																								path=":ml2"
+																								element={
+																									<RequireAuth>
+																										<Unp />
+																									</RequireAuth>
+																								}
+																							/>
+																						</Route>
+
+																						{/* unauthorised section -----------------------------------------------------*/}
+																						{/* path to unauthhorised  */}
+																						<Route
+																							path="/unauthorised"
+																							element={<NotAuthenticated />}
 																						/>
+
+																						{/* signout section -----------------------------------------------------*/}
+																						{/* path to signout main page [ml1 = signout] */}
+																						<Route path="/signout" element={<Signout />} />
+
+																						<Route path="*" element={<NoPageFound />} />
 																					</Route>
-																				</Route>
-																				{/* </Route> */}
+																				</Routes>
 
-																				{/* TODO: Attend to the issue of displaying Unp for a signedin user */}
-																				{/* unp section (signedin user)-----------------------------------------------------*/}
-																				{/* path to unp main page [ml1 = unp] */}
-																				<Route
-																					path="/unp"
-																					element={
-																						<Suspense fallback={loader}>
-																							<RequireAuth>
-																								<Unp />
-																							</RequireAuth>
-																						</Suspense>
-																					}
-																				>
-																					{/* ml2 = ''[] or ''[] or ''[] or ''[] */}
-																					<Route
-																						path=":ml2"
-																						element={
-																							<RequireAuth>
-																								<Unp />
-																							</RequireAuth>
-																						}
-																					/>
-																				</Route>
-
-																				{/* unauthorised section -----------------------------------------------------*/}
-																				{/* path to unauthhorised  */}
-																				<Route
-																					path="/unauthorised"
-																					element={<NotAuthenticated />}
-																				/>
-
-																				{/* signout section -----------------------------------------------------*/}
-																				{/* path to signout main page [ml1 = signout] */}
-																				<Route path="/signout" element={<Signout />} />
-
-																				<Route path="*" element={<NoPageFound />} />
-																			</Route>
-																		</Routes>
-
-																		<Modal />
-																		{/* </div> */}
-																	</BrowserRouter>
-																</div>
-															</PoContextProvider>
-														</MenuContextProvider>
-													</AuthContextProvider>
-												</ModalContextProvider>
-											</FormStateContextProvider>
-										</Provider>
-									</MediaViewContextProvider>
-								</PhotoAppContextProvider>
-							</GeocodingContextProvider>
-						</ReverseGeocodingContextProvider>
-					</ErfsContextProvider>
-				</CliamsContextProvider>
-			</AreaTreeContextProvider>
+																				<Modal />
+																				{/* </div> */}
+																			</BrowserRouter>
+																		</div>
+																	</PoContextProvider>
+																</MenuContextProvider>
+															</AuthContextProvider>
+														</ModalContextProvider>
+													</FormStateContextProvider>
+												</Provider>
+											</MediaViewContextProvider>
+										</PhotoAppContextProvider>
+									</GeocodingContextProvider>
+								</ReverseGeocodingContextProvider>
+							</ErfsContextProvider>
+						</CliamsContextProvider>
+					</AreaTreeContextProvider>
+				</AstsTableContextProvider>
+			</TrnsTableContextProvider>
 			<ToastContainer />
 		</>
 	);

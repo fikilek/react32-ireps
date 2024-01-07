@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
-import { irepsDictionary } from "../../utils/utils";
-import Table from "./Table";
+import { irepsDictionary } from "../../utils/utils.js";
+import Table from "./Table.jsx";
 import "./Table.css";
 import "./TableWithAddRecordBtn.css";
-import TableAddRecordBtn from "./tableBtns/TableAddRecordBtn";
-import TableWrapper from "./TableWrapper";
-import { useColDefs } from "../../hooks/useColDefs";
-import { useViewportDimensions } from "../../hooks/useViewportDimentions";
-import { useAstsTable } from "../../hooks/useAstsTable.js";
-import { AstsTableContext } from "../../contexts/AstsTableContext.js";
+import TableAddRecordBtn from "./tableBtns/TableAddRecordBtn.jsx";
+import TableWrapper from "./TableWrapper.jsx";
+import { useColDefs } from "../../hooks/useColDefs.js";
+import { useViewportDimensions } from "../../hooks/useViewportDimentions.js";
+import { useTrnsTable } from "../../hooks/useTrnsTable.js";
+import { TrnsTableContext } from "../../contexts/TrnsTableContext.js";
+import TableLazyTrns from "./TableLazyTrns.jsx";
 
 const showTableAddRecordBtn = (ml1, ml2, ml3, nfd, fn) => {
 	if (ml1 === "asts" || ml1 === "trns") return null;
@@ -16,8 +17,8 @@ const showTableAddRecordBtn = (ml1, ml2, ml3, nfd, fn) => {
 };
 
 // Suppliers is a page component
-const TableWithAddRecordBtn = props => {
-	console.log(`Asts - props`, props);
+const TableTrnsWithAddRecordBtn = props => {
+	console.log(`Trns - props`, props);
 	const { ml1, tn, ml3, nfd, fn } = props;
 
 	// const {
@@ -29,10 +30,10 @@ const TableWithAddRecordBtn = props => {
 	// const rowData = useMemo(()=>{return data},[data])
 	// console.log(`rowData`, rowData);
 
-	const { state } = useContext(AstsTableContext);
-	// console.log(`state`, state);
+	const { state } = useContext(TrnsTableContext);
+	console.log(`state`, state);
 
-	useAstsTable({ ml1, ml2: tn, ml3 });
+	useTrnsTable({ ml1, ml2: tn, ml3 });
 
 	const { getViewportDimensions } = useViewportDimensions();
 	const viewportDimesions = getViewportDimensions();
@@ -70,11 +71,12 @@ const TableWithAddRecordBtn = props => {
 				<div></div>
 				<div></div>
 			</div>
-			<TableWrapper rowData={state.asts} columnDefs={tableFields} ml1={ml1}>
-				<Table rowData={state.asts} columnDefs={tableFields} ml1={ml1} />
+			<TableWrapper rowData={state.trns} columnDefs={tableFields} ml1={ml1}>
+				<TableLazyTrns rowData={state.trns} columnDefs={tableFields} ml1={ml1} />
 			</TableWrapper>
+
 			{showTableAddRecordBtn(ml1, tn, ml3, nfd, fn)}
 		</div>
 	);
 };
-export default TableWithAddRecordBtn;
+export default TableTrnsWithAddRecordBtn;

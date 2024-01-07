@@ -5,6 +5,7 @@ import useAuthContext from "../../hooks/useAuthContext";
 import { PropagateLoader } from "react-spinners";
 import NotAuthenticated from "../auth/NotAuthenticated";
 import "../../components/table/TableUsersList.css";
+import TableTrnsWithAddRecordBtn from "../../components/table/TableTrnsWithAddRecordBtn";
 
 const Trns = () => {
 	// console.log(`Asts rendering`);
@@ -15,7 +16,7 @@ const Trns = () => {
 	// console.log(`ml3`, ml3)
 	return isAuthReady ? (
 		user ? (
-			<TableWithAddRecordBtn ml1="trns" tn={ml2} ml3={ml3} fn="TrnsForm" />
+			<TableTrnsWithAddRecordBtn ml1="trns" tn={ml2} ml3={ml3} fn="TrnsForm" />
 		) : (
 			<NotAuthenticated />
 		)

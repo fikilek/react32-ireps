@@ -17,8 +17,8 @@ const TrnAstCheckoutFormBtn = params => {
 	// iterage though the catergories and prepare trnObject with astCat and total asts in each astCat
 	let trnObject = {};
 	// const NumberOfAsts = Number(meters) + Number(boxes) + Number(cbs) + Number(seals);
-	let numberOfAsts = 0
-		astCategoriesArray &&
+	let numberOfAsts = 0;
+	astCategoriesArray &&
 		astCategoriesArray.forEach(ast => {
 			// console.log(`ast`, ast);
 
@@ -26,13 +26,14 @@ const TrnAstCheckoutFormBtn = params => {
 			// console.log(`asset`, asset);
 
 			if (asset) {
+				// console.log(`asset`, asset);
 				const doneArray = asset.filter(asst => {
 					// console.log(`asst`, asst);
 
 					const confirmTrn = asst?.trnData?.confirmations?.confirmTrn;
 					// console.log(`confirmTrn`, confirmTrn);
 
-					return (confirmTrn === "not done" || confirmTrn === "choose") ? false : true;
+					return confirmTrn === "not done" || confirmTrn === "choose" ? false : true;
 					// return true;
 					// return null
 				});
