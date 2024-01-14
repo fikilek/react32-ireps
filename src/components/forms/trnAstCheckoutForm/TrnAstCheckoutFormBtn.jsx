@@ -4,15 +4,15 @@ import useModal from "../../../hooks/useModal";
 
 const TrnAstCheckoutFormBtn = params => {
 	// this component is use to launch a TrnAstCheckoutForm component where assets ca be checked out and inti a store
-	// console.log(`params.data`, params.data)
+	console.log(`params`, params);
 
 	// get all existing  asts catergories from firestore asts-catergories collection
 	const { astCategoriesArray } = useAstCategories();
-	// console.log(`astCategoriesArray`, astCategoriesArray);
+	console.log(`astCategoriesArray`, astCategoriesArray);
 
 	// get trn data
-	const astCats = params.data.astData;
-	// console.log(`astCats`, astCats);
+	const astCats = params?.data?.astData;
+	console.log(`astCats`, astCats);
 
 	// iterage though the catergories and prepare trnObject with astCat and total asts in each astCat
 	let trnObject = {};
@@ -20,7 +20,7 @@ const TrnAstCheckoutFormBtn = params => {
 	let numberOfAsts = 0;
 	astCategoriesArray &&
 		astCategoriesArray.forEach(ast => {
-			// console.log(`ast`, ast);
+			console.log(`ast`, ast);
 
 			const asset = astCats[ast];
 			// console.log(`asset`, asset);

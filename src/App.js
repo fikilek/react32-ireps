@@ -53,7 +53,8 @@ import { Suspense, lazy } from "react";
 import { ClockLoader } from "react-spinners";
 
 const Erfs = lazy(() => import("./pages/erfs/Erfs"));
-const Trns = lazy(() => import("./pages/trns/Trns"));
+// const Trns = lazy(() => import("./pages/trns/Trns"));
+const TableLazy = lazy(() => import("./components/table/TableLazy.jsx"));
 const Asts = lazy(() => import("./pages/asts/Asts"));
 const Admin = lazy(() => import("./pages/admin/Admin"));
 const Unp = lazy(() => import("./pages/unps/UserProfile"));
@@ -112,12 +113,12 @@ function App() {
 																								element={
 																									<Suspense fallback={loader}>
 																										<RequireAuth>
-																											<Asts />
+																											<TableLazy ml1={"asts"} />
 																										</RequireAuth>
 																									</Suspense>
 																								}
 																							/>
-																							<Route
+																							{/* <Route
 																								path=":ml2"
 																								element={
 																									<Suspense fallback={loader}>
@@ -137,7 +138,7 @@ function App() {
 																										</Suspense>
 																									}
 																								/>
-																							</Route>
+																							</Route> */}
 																						</Route>
 
 																						{/* transactions section -----------------------------------------------------*/}
@@ -148,12 +149,12 @@ function App() {
 																								element={
 																									<Suspense fallback={loader}>
 																										<RequireAuth>
-																											<Trns />
+																											<TableLazy ml1={"trns"} />
 																										</RequireAuth>
 																									</Suspense>
 																								}
 																							/>
-																							<Route
+																							{/* <Route
 																								path=":ml2"
 																								element={
 																									<Suspense fallback={loader}>
@@ -173,7 +174,7 @@ function App() {
 																										</Suspense>
 																									}
 																								/>
-																							</Route>
+																							</Route> */}
 																						</Route>
 
 																						{/* erfs section -----------------------------------------------------*/}

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunknav=self.webpackChunknav||[]).push([[57],{1057:(s,a,e)=>{e.r(a),e.d(a,{default:()=>o});e(2791);var n=e(8082),c=e(184);const o=()=>(0,c.jsxs)("div",{className:"no-page-found",children:[(0,c.jsx)("img",{src:n,alt:"error 404"}),(0,c.jsx)("h3",{className:"npf-404",children:"Page Not Found"}),(0,c.jsx)("button",{className:"npf-go-home-btn",children:"Go to back"})]})}}]);
+//# sourceMappingURL=57.3a2a7611.chunk.js.map

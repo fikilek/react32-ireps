@@ -140,6 +140,44 @@ export const useColumnDefs = props => {
 			},
 		},
 		{
+			headerName: "Updated",
+			children: [
+				{
+					field: "metaData.updatedByUser",
+					columnGroupShow: "open",
+					headerName: "Updated By",
+					width: 130,
+					cellRendererParams: {
+						breakpoint: "xs",
+					},
+				},
+				{
+					field: "metaData.updatedAtDatetime",
+					columnGroupShow: "closed",
+					headerName: "Updated At Datetime",
+					width: 190,
+					cellRenderer: params => {
+						// console.log(`params.value`, params.value);
+
+						// create a firestore Timestamp
+						const timestamp = new Timestamp(
+							params.value.seconds,
+							params.value.nanoseconds
+						);
+
+						// console.log(`timestamp`, timestamp);
+						return <p>{moment(timestamp.toDate()).format("YYYY-MM-DD HH:mm:ss")}</p>;
+					},
+					cellRendererParams: {
+						breakpoint: "xs",
+					},
+				},
+			],
+			cellRendererParams: {
+				breakpoint: "xs",
+			},
+		},
+		{
 			field: "edit",
 			headerName: "Edit",
 			width: 80,
@@ -2286,7 +2324,7 @@ export const useColumnDefs = props => {
 			field: "id",
 			headerName: "Ast Id",
 			width: 100,
-			hide: false,
+			hide: true,
 			cellRendererParams: {
 				breakpoint: "xs",
 			},
@@ -2301,6 +2339,18 @@ export const useColumnDefs = props => {
 					width: 130,
 					cellRendererParams: {
 						breakpoint: "xs",
+					},
+					cellRenderer: props => {
+						if (props.value !== undefined) {
+							return props.value;
+						} else {
+							return (
+								<img
+									src="https://www.ag-grid.com/example-assets/loading.gif"
+									alt="loader"
+								/>
+							);
+						}
 					},
 				},
 				{
@@ -2365,30 +2415,30 @@ export const useColumnDefs = props => {
 				breakpoint: "xs",
 			},
 		},
-		{
-			field: "metaData.createdThrough",
-			headerName: "Creator",
-			width: 130,
-			filter: "agTextColumnFilter",
+		// {
+		// 	field: "metaData.createdThrough",
+		// 	headerName: "Creator",
+		// 	width: 130,
+		// 	filter: "agTextColumnFilter",
 
-			filterParams: {
-				valueGetter: params => {
-					const { createdThrough } = params.data.metaData;
-					// console.log(`createdThrough`, createdThrough);
-					return `${createdThrough.creator}${createdThrough.creatorNo}`;
-				},
-			},
+		// 	filterParams: {
+		// 		valueGetter: params => {
+		// 			const { createdThrough } = params?.data?.metaData;
+		// 			// console.log(`createdThrough`, createdThrough);
+		// 			return `${createdThrough.creator}${createdThrough.creatorNo}`;
+		// 		},
+		// 	},
 
-			cellRenderer: params => {
-				const { createdThrough } = params.data.metaData;
-				return (
-					<button className="table-row-btn table-row-btn-creator ">{`${createdThrough?.creator} : ${createdThrough?.creatorNo}`}</button>
-				);
-			},
-			cellRendererParams: {
-				breakpoint: "xs",
-			},
-		},
+		// 	cellRenderer: params => {
+		// 		const createdThrough = params?.data?.metaData?.createdThrough;
+		// 		return (
+		// 			<button className="table-row-btn table-row-btn-creator ">{`${createdThrough?.creator} : ${createdThrough?.creatorNo}`}</button>
+		// 		);
+		// 	},
+		// 	cellRendererParams: {
+		// 		breakpoint: "xs",
+		// 	},
+		// },
 		{
 			field: "metaData.trnCount",
 			headerName: "Ast Trn(s)",
@@ -2404,29 +2454,29 @@ export const useColumnDefs = props => {
 				breakpoint: "xs",
 			},
 		},
-		{
-			field: "newTrn",
-			headerName: "New Trn",
-			width: 170,
-			cellRenderer: memo(TableBtnTrnSelect),
-			cellRendererParams: {
-				ml2,
-				breakpoint: "xs",
-			},
-		},
+		// {
+		// 	field: "newTrn",
+		// 	headerName: "New Trn",
+		// 	width: 170,
+		// 	cellRenderer: memo(TableBtnTrnSelect),
+		// 	cellRendererParams: {
+		// 		ml2,
+		// 		breakpoint: "xs",
+		// 	},
+		// },
 		{
 			headerName: "Asset Data",
 			children: [
-				{
-					field: "astData.astNo",
-					columnGroupShow: "closed",
-					headerName: `Asset No`,
-					width: 170,
-					cellRenderer: AstMediaBtn,
-					cellRendererParams: {
-						breakpoint: "xs",
-					},
-				},
+				// {
+				// 	field: "astData.astNo",
+				// 	columnGroupShow: "closed",
+				// 	headerName: `Asset No`,
+				// 	width: 170,
+				// 	cellRenderer: AstMediaBtn,
+				// 	cellRendererParams: {
+				// 		breakpoint: "xs",
+				// 	},
+				// },
 				{
 					field: "astData.astSerialNo",
 					columnGroupShow: "open",
@@ -2988,8 +3038,8 @@ export const useColumnDefs = props => {
 		{
 			field: "id",
 			headerName: "Trn Id",
-			width: 220,
-			hide: false,
+			width: 100,
+			hide: true,
 			cellRendererParams: {
 				breakpoint: "xs",
 			},
@@ -3004,6 +3054,18 @@ export const useColumnDefs = props => {
 					width: 130,
 					cellRendererParams: {
 						breakpoint: "xs",
+					},
+					cellRenderer: props => {
+						if (props.value !== undefined) {
+							return props.value;
+						} else {
+							return (
+								<img
+									src="https://www.ag-grid.com/example-assets/loading.gif"
+									alt="loader"
+								/>
+							);
+						}
 					},
 				},
 				{
@@ -3117,15 +3179,15 @@ export const useColumnDefs = props => {
 
 		// trn -  transaction data (different for all trns)
 
-		{
-			field: "astData",
-			headerName: "Asset Checkout/in",
-			width: 260,
-			cellRenderer: memo(TrnAstCheckoutFormBtn),
-			cellRendererParams: {
-				breakpoint: "xs",
-			},
-		},
+		// {
+		// 	field: "astData",
+		// 	headerName: "Asset Checkout/in",
+		// 	width: 260,
+		// 	cellRenderer: memo(TrnAstCheckoutFormBtn),
+		// 	cellRendererParams: {
+		// 		breakpoint: "xs",
+		// 	},
+		// },
 
 		// trn - Eddit transaction Assets
 

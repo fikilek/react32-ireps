@@ -4,7 +4,7 @@ const TableTrnsForAstBtn = props => {
 	// console.log(`props`, props)
 
 	// Extract trnCount from metaData.trnCount
-	const trnCount = props.data.metaData.trnCount?.length || 0;
+	const trnCount = props?.data?.metaData?.trnCount?.length || 0;
 
 	// Get tenCount newTrns from metaData.trnCount
 	const ast = props.data;

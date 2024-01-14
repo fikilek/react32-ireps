@@ -220,13 +220,13 @@ export function TabsErfsClusterMap(props) {
 			</div>
 			<GoogleMapReact
 				bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
-				defaultCenter={{ lat: -26.541960658447646, lng: 28.338629116440828 }}
+				defaultCenter={{ lat: -26.135604364944857, lng: 28.688087871069888 }}
 				center={areaCenter[area.name]}
 				defaultZoom={16}
 				yesIWantToUseGoogleMapApiInternals
 				onGoogleApiLoaded={onMapLoad}
 				onChange={args => {
-					console.log(`args`, args);
+					// console.log(`args`, args);
 					const { zoom, bounds } = args;
 					setZoom(zoom);
 					setBounds([bounds.nw.lng, bounds.se.lat, bounds.se.lng, bounds.nw.lat]);
@@ -258,6 +258,7 @@ export function TabsErfsClusterMap(props) {
 									style={{
 										width: `${10 + (pointCount / points.length) * 20}px`,
 										height: `${10 + (pointCount / points.length) * 20}px`,
+										backgroundColor: "#ff66ff",
 									}}
 									onClick={() => {
 										const expansionZoom = Math.min(
@@ -289,11 +290,11 @@ export function TabsErfsClusterMap(props) {
 						</Marker>
 					);
 				})}
-				{/* <Marker
+				<Marker
 					position={{ lat: userGps.coordinates.lat, lng: userGps.coordinates.lng }}
 				>
 					<div className="userGpsPosition"></div>
-				</Marker> */}
+				</Marker>
 			</GoogleMapReact>
 		</div>
 	);

@@ -58,7 +58,7 @@ const TableTrnsFromErfs = props => {
 	// console.log(`props`, props);
 
 	const { newTrnsArray, trnType } = props.trnsData;
-	// console.log(`newTrnsArray`, newTrnsArray);
+	console.log(`newTrnsArray`, newTrnsArray);
 
 	// if trnType is 'audit', add assets into the trns
 	let newAuditTrnsArray = newTrnsArray;
@@ -83,17 +83,17 @@ const TableTrnsFromErfs = props => {
 	// console.log(`columnDefs`, columnDefs);
 
 	const handleSubmit = e => {
-		// console.log(`newTrnsArray`, newTrnsArray);
+		console.log(`newTrnsArray`, newTrnsArray);
 		newAuditTrnsArray &&
 			newAuditTrnsArray.map(trn => {
 				console.log(`trn`, trn);
-				addDocument(trn);
+				return addDocument(trn);
 			});
 		closeModal();
 	};
 
 	useEffect(() => {
-		console.log(`response`, response);
+		// console.log(`response`, response);
 		// TODO: Come back and fix the response problem here. Got ot do with useFirestore addDcocument async
 		if (response.success) {
 			console.log(
@@ -114,7 +114,6 @@ const TableTrnsFromErfs = props => {
 	}, [response]);
 
 	// Table Header data
-
 
 	return (
 		<div className={`table new-trns-from-erfs`}>

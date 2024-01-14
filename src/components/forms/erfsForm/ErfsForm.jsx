@@ -51,7 +51,6 @@ const ErfsForm = props => {
 		console.log(`duplicating erfData`, formData);
 
 		// dont duplicate if property type is empty
-		const efrNo = formData?.erfNo;
 		const propertyType = formData?.propertyType?.type;
 		console.log(`propertyType`, propertyType);
 
@@ -70,6 +69,7 @@ const ErfsForm = props => {
 				progress: undefined,
 				theme: "colored",
 			});
+			closeModal();
 			return null;
 		}
 

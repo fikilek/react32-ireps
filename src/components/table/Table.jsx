@@ -81,7 +81,7 @@ const Table = props => {
 		// console.log(`columnApi`, columnApi);
 
 		//get viewport width
-		const viewportWidth = columnApi.columnModel.viewportRight;
+		const viewportWidth = columnApi.columnModel?.viewportRight;
 		// console.log(`viewportWidth`, viewportWidth);
 	};
 

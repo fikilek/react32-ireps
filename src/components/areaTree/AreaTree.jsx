@@ -142,7 +142,8 @@ function AreaTree() {
 
 	const toggleAreaTreeView = e => {
 		setShowHide(() => {
-			return showHide === "hide" ? "show" : "hide";
+			// return showHide === "hide" ? "show" : "hide";
+			return showHide === "hide";
 		});
 	};
 

@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 import { Timestamp } from "firebase/firestore";
 
 const TableBtnTrnSelect = params => {
-	// console.log(`params.data`, params.data);
+	console.log(`params.data`, params.data);
 	const { user } = useAuthContext();
 
 	const { response, addDocument } = useFirestore("trns");
@@ -47,7 +47,7 @@ const TableBtnTrnSelect = params => {
 
 	//-------------------------------------------------
 
-	const { astState, astCartegory, astNo } = params.data.astData;
+	const { astState, astCartegory } = params?.data?.astData;
 
 	const [newTrn, setNewTrn] = useState(newTrnData);
 	// console.log(`newTrn`, newTrn);

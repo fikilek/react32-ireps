@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "ireps-development",
+    "default": "ireps-cl1-live",
     "ireps1": "ireps-cl1-live",
     "ireps-development": "ireps-development"
   },

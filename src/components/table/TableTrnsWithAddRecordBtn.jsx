@@ -10,6 +10,7 @@ import { useViewportDimensions } from "../../hooks/useViewportDimentions.js";
 import { useTrnsTable } from "../../hooks/useTrnsTable.js";
 import { TrnsTableContext } from "../../contexts/TrnsTableContext.js";
 import TableLazyTrns from "./TableLazyTrns.jsx";
+import TableLazyData from "./TableLazyData.jsx";
 
 const showTableAddRecordBtn = (ml1, ml2, ml3, nfd, fn) => {
 	if (ml1 === "asts" || ml1 === "trns") return null;
@@ -18,7 +19,7 @@ const showTableAddRecordBtn = (ml1, ml2, ml3, nfd, fn) => {
 
 // Suppliers is a page component
 const TableTrnsWithAddRecordBtn = props => {
-	console.log(`Trns - props`, props);
+	// console.log(`Trns - props`, props);
 	const { ml1, tn, ml3, nfd, fn } = props;
 
 	// const {
@@ -31,7 +32,7 @@ const TableTrnsWithAddRecordBtn = props => {
 	// console.log(`rowData`, rowData);
 
 	const { state } = useContext(TrnsTableContext);
-	console.log(`state`, state);
+	// console.log(`state`, state);
 
 	useTrnsTable({ ml1, ml2: tn, ml3 });
 

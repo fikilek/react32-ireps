@@ -24,7 +24,7 @@ const TrnDataFormBtn = params => {
 				onClick={handleClick}
 				className="table-row-btn table-row-btn-trn-data"
 			>
-				{data.metaData.trnType}
+				{data?.metaData?.trnType}
 			</button>
 		</div>
 	);

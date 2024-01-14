@@ -61,7 +61,7 @@ header .menu-icons svg {
 	height: 100%;
 	padding: 0.3rem 0.4rem 0.8rem;
 	min-width: 46rem;
-	display: flex;
+	/* display: flex; */
 	flex-direction: column;
 	align-items: center;
 }

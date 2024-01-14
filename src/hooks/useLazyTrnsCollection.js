@@ -9,7 +9,6 @@ import {
 } from "firebase/firestore";
 import { useContext, useEffect, useReducer, useRef } from "react";
 import { db } from "../firebaseConfig/fbConfig";
-import { AstsTableContext } from "../contexts/AstsTableContext";
 import { TrnsTableContext } from "../contexts/TrnsTableContext";
 
 const initLazyData = {
@@ -42,7 +41,7 @@ export const lazyReducer = (state, action) => {
 			};
 
 		case "SUCCESS":
-			console.log(`SUCCESS action.payload.data`, action.payload?.data);
+			// console.log(`SUCCESS action.payload.data`, action.payload?.data);
 			return {
 				...state,
 				lazyData: action.payload.data,
@@ -73,15 +72,15 @@ export const lazyReducer = (state, action) => {
 
 const useLazyTrnsCollection = props => {
 	// console.log(`props`, props);
-	const { ml1, ml2, ml3 } = props;
+	const { ml1 } = props;
 
 	const { state: st, dispatch: dis } = useContext(TrnsTableContext);
 
 	const [lazyState, dispatch] = useReducer(lazyReducer, initLazyData);
-	// console.log(`lazyState`, lazyState);
+	// console.log(`trns lazyState`, lazyState);
 
 	const fetchData = useRef((dispatch, lastDoc, fetchQuantity) => {
-		console.log(`fetchData called`);
+		// console.log(`fetchData called`);
 
 		const q = query(
 			collection(db, ml1),
@@ -116,13 +115,7 @@ const useLazyTrnsCollection = props => {
 	// console.log(`fechData.current`, fetchData.current);
 
 	useEffect(() => {
-		// perform pre-query setup
-		// console.log(`st.fetch`, st.fetch);
-		// console.log(`lazyState.inprogress.isPending`, lazyState.progress.isPending);
-		console.log(`lazyState.lastDoc`, lazyState.lastDoc);
-
 		const canFetch = st.fetch && !lazyState.progress.isPending;
-		console.log(`canFetch`, canFetch);
 
 		try {
 			if (canFetch) {
